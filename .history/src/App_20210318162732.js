@@ -26,8 +26,7 @@ export default function App() {
       piece[1] * SCALE >= CANVAS_SIZE[1] ||
       piece[1] < 0 
     )
-      return true; 
-    return false; 
+    return true; 
   }
 
   const checkAppleCollision = () => {

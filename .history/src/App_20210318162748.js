@@ -27,7 +27,7 @@ export default function App() {
       piece[1] < 0 
     )
       return true; 
-    return false; 
+    else return false; 
   }
 
   const checkAppleCollision = () => {

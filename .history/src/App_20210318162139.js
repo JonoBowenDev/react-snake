@@ -18,16 +18,11 @@ export default function App() {
   const [speed, setSpeed] = useState(500); 
   const [gameOver, setGameOver] = useState(false); 
 
+
+
   // Collision functions
-  const checkCollision = (piece, snk = snake) => {
-    if (
-      piece[0] * SCALE >= CANVAS_SIZE[0] ||
-      piece[0] < 0 ||
-      piece[1] * SCALE >= CANVAS_SIZE[1] ||
-      piece[1] < 0 
-    )
-      return true; 
-    return false; 
+  const checkCollosion = () => {
+    
   }
 
   const checkAppleCollision = () => {
@@ -58,7 +53,6 @@ export default function App() {
     const snakeCopy = JSON.parse(JSON.stringify(snake)); 
     const newSnakeHead = [snakeCopy[0][0] + direction[0], snakeCopy[0][1] + direction[1]]; 
     snakeCopy.unshift(newSnakeHead);
-    if (checkCollision(newSnakeHead)) endGame(); 
     snakeCopy.pop(); 
     setSnake(snakeCopy); 
   }
