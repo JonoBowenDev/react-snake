@@ -18,8 +18,6 @@ export default function App() {
   const [speed, setSpeed] = useState(null); 
   const [gameOver, setGameOver] = useState(false); 
 
-  useInterval(() => gameLoop(), speed);
-
   // Collision functions
   const checkCollision = (piece, snk = snake) => {
     
@@ -45,16 +43,16 @@ export default function App() {
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
       }
-      setApple(newApple);
-      return true;
+      setApple(newApple); 
+      return true; 
     }
-    return false;
+    return false; 
   }
 
   // Gameplay functions 
   const startGame = () => {
     setSnake(SNAKE_START);
-    setApple(APPLE_START);
+    setApple(SNAKE_START);
     setDirection([0, -1]) // up
     setSpeed(SPEED);
     setGameOver(false);
@@ -67,7 +65,7 @@ export default function App() {
 
   const moveSnake = ({ keyCode }) => keyCode >= 37 && keyCode <= 40 && setDirection(DIRECTIONS[keyCode]); 
 
-  const createApple = () => apple.map((_a, i) => Math.floor(Math.random() * (CANVAS_SIZE[i] / SCALE))); 
+  const createApple = () => apple.map((_, i) => Math.floor(Math.random() * CANVAS_SIZE[i]) / SCALE); 
 
   const gameLoop = () => {
     const snakeCopy = JSON.parse(JSON.stringify(snake)); 
@@ -94,7 +92,7 @@ export default function App() {
 
   }, [snake, apple, gameOver]); 
 
-   
+  useInterval(() => gameLoop(), speed); 
 
   return (
     <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>

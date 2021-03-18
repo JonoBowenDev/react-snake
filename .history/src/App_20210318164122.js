@@ -45,16 +45,16 @@ export default function App() {
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
       }
-      setApple(newApple);
-      return true;
+      setApple(newApple); 
+      return true; 
     }
-    return false;
+    return false; 
   }
 
   // Gameplay functions 
   const startGame = () => {
     setSnake(SNAKE_START);
-    setApple(APPLE_START);
+    setApple(SNAKE_START);
     setDirection([0, -1]) // up
     setSpeed(SPEED);
     setGameOver(false);
