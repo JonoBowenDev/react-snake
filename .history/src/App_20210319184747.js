@@ -8,7 +8,6 @@ import {
   SPEED,
   DIRECTIONS
 } from "./constants"; 
-import randomMove from "./snakeAI"; 
 
 export default function App() {
 
@@ -66,7 +65,9 @@ export default function App() {
     setGameOver(true);
   }
 
-  const moveSnake = (keyCode) => {
+  const moveSnake = ({ keyCode }) => {
+    console.log("\n Moving Snake:")
+    console.log(keyCode); 
     keyCode >= 37 && keyCode <= 40 && setDirection(DIRECTIONS[keyCode]); 
   }
 
@@ -74,8 +75,7 @@ export default function App() {
 
   const gameLoop = () => {
 
-    // Snake AI
-    moveSnake(randomMove()); 
+    moveSnake(37); 
 
     const snakeCopy = JSON.parse(JSON.stringify(snake)); 
     const newSnakeHead = [snakeCopy[0][0] + direction[0], snakeCopy[0][1] + direction[1]]; 
@@ -104,7 +104,7 @@ export default function App() {
    
 
   return (
-    <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e.keyCode)}>
+    <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
       
       <canvas
         style={{ border: "1px solid black"}}

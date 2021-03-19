@@ -8,7 +8,6 @@ import {
   SPEED,
   DIRECTIONS
 } from "./constants"; 
-import randomMove from "./snakeAI"; 
 
 export default function App() {
 
@@ -74,8 +73,7 @@ export default function App() {
 
   const gameLoop = () => {
 
-    // Snake AI
-    moveSnake(randomMove()); 
+    moveSnake(39); 
 
     const snakeCopy = JSON.parse(JSON.stringify(snake)); 
     const newSnakeHead = [snakeCopy[0][0] + direction[0], snakeCopy[0][1] + direction[1]]; 

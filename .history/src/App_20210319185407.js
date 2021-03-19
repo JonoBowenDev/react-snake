@@ -8,7 +8,7 @@ import {
   SPEED,
   DIRECTIONS
 } from "./constants"; 
-import randomMove from "./snakeAI"; 
+import { randomMove } from "./snakeAI"; 
 
 export default function App() {
 
