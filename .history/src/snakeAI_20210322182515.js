@@ -10,15 +10,12 @@ import {
 
 function randomMove(currentDirection) {
     const directions = [38, 40, 37, 39]
+    let randomElement = currentDirection;
+    randomElement = directions[Math.floor(Math.random() * directions.length)];
 
-    // GET THE OPPOSITE TO THE CURRENT DIRECTION
-
-    let randomElement = directions[Math.floor(Math.random() * directions.length)];
-    
-    // while (randomElement === oppositeDirection) {
-    //     randomElement = directions[Math.floor(Math.random() * directions.length)];
-    // }
-    
+    if (DIRECTIONS[randomElement] === currentDirection) {
+        console.log("YEET");   
+    }
 
     console.log(DIRECTIONS[randomElement]);
     console.log(currentDirection); 

@@ -15,7 +15,7 @@ export default function App() {
   const canvasRef = useRef();
   const [snake, setSnake] = useState(SNAKE_START);
   const [apple, setApple] = useState(APPLE_START);
-  const [direction, setDirection] = useState();
+  const [direction, setDirection] = useState([0, -1]);
   const [speed, setSpeed] = useState(null); 
   const [gameOver, setGameOver] = useState(false); 
 
@@ -56,7 +56,7 @@ export default function App() {
   const startGame = () => {
     setSnake(SNAKE_START);
     setApple(APPLE_START);
-    setDirection([0, -1, "UP"]) // up
+    setDirection([0, -1]) // up
     setSpeed(SPEED);
     setGameOver(false);
   }
@@ -77,7 +77,7 @@ export default function App() {
     const snakeCopy = JSON.parse(JSON.stringify(snake)); 
 
     // Snake AI
-    moveSnake(randomMove(direction)); 
+    moveSnake(randomMove(snakeCopy)); 
 
     const newSnakeHead = [snakeCopy[0][0] + direction[0], snakeCopy[0][1] + direction[1]]; 
     snakeCopy.unshift(newSnakeHead);

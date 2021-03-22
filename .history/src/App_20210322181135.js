@@ -56,7 +56,7 @@ export default function App() {
   const startGame = () => {
     setSnake(SNAKE_START);
     setApple(APPLE_START);
-    setDirection([0, -1, "UP"]) // up
+    setDirection([0, -1]) // up
     setSpeed(SPEED);
     setGameOver(false);
   }

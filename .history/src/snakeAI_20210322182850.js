@@ -15,9 +15,9 @@ function randomMove(currentDirection) {
 
     let randomElement = directions[Math.floor(Math.random() * directions.length)];
     
-    // while (randomElement === oppositeDirection) {
-    //     randomElement = directions[Math.floor(Math.random() * directions.length)];
-    // }
+    while (randomElement === oppositeDirection) {
+        randomElement = directions[Math.floor(Math.random() * directions.length)];
+    }
     
 
     console.log(DIRECTIONS[randomElement]);
