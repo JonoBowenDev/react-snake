@@ -20,6 +20,9 @@ function randomMove(currentDirection) {
     while (DIRECTIONS[randomElement][2] === currentDirection[3]) {
         randomElement = directions[Math.floor(Math.random() * directions.length)];
     }
+
+    console.log(DIRECTIONS[randomElement][2]);
+    console.log(currentDirection[3]) 
     
     return (randomElement); 
 }

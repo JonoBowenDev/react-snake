@@ -51,7 +51,6 @@ export default function App() {
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
       }
-      setApplesEaten(applesEaten + 1); 
       setApple(newApple);
       return true;
     }

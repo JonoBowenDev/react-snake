@@ -13,7 +13,7 @@ import randomMove from "./snakeAI";
 export default function App() {
 
   // AI FEATURES 
-  const snakeAI = false; // Set to false for human play
+  const snakeAI = true; // Set to false for human play
 
   const [applesEaten, setApplesEaten] = useState(0); 
 
@@ -51,7 +51,6 @@ export default function App() {
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
       }
-      setApplesEaten(applesEaten + 1); 
       setApple(newApple);
       return true;
     }
@@ -123,12 +122,7 @@ export default function App() {
         height={`${CANVAS_SIZE[1]}px`}
         />
 
-      {gameOver && 
-        <div>
-          GAME OVER!
-          Apples Eaten: {applesEaten}
-        </div>
-      }
+      {gameOver && <div>GAME OVER!</div>}
 
       <button onClick={startGame}>Start Game</button>
 

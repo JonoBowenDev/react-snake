@@ -51,7 +51,6 @@ export default function App() {
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
       }
-      setApplesEaten(applesEaten + 1); 
       setApple(newApple);
       return true;
     }
@@ -89,9 +88,16 @@ export default function App() {
     }
   
     const newSnakeHead = [snakeCopy[0][0] + direction[0], snakeCopy[0][1] + direction[1]]; 
+    
     snakeCopy.unshift(newSnakeHead);
+    
     if (checkCollision(newSnakeHead)) endGame(); 
-    if (!checkAppleCollision(snakeCopy)) snakeCopy.pop(); 
+
+    if (!checkAppleCollision(snakeCopy)) {
+      snakeCopy.pop(); 
+      applesEaten++; 
+    } 
+
     setSnake(snakeCopy); 
   }
 

@@ -13,7 +13,7 @@ import randomMove from "./snakeAI";
 export default function App() {
 
   // AI FEATURES 
-  const snakeAI = false; // Set to false for human play
+  const snakeAI = true; // Set to false for human play
 
   const [applesEaten, setApplesEaten] = useState(0); 
 
@@ -51,7 +51,6 @@ export default function App() {
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
       }
-      setApplesEaten(applesEaten + 1); 
       setApple(newApple);
       return true;
     }

@@ -12,17 +12,14 @@ import randomMove from "./snakeAI";
 
 export default function App() {
 
-  // AI FEATURES 
-  const snakeAI = false; // Set to false for human play
-
-  const [applesEaten, setApplesEaten] = useState(0); 
-
   const canvasRef = useRef();
   const [snake, setSnake] = useState(SNAKE_START);
   const [apple, setApple] = useState(APPLE_START);
   const [direction, setDirection] = useState();
   const [speed, setSpeed] = useState(null); 
   const [gameOver, setGameOver] = useState(false); 
+
+  const [applesEaten, setApplesEaten] = useState(0); 
 
   useInterval(() => gameLoop(), speed);
 
@@ -51,7 +48,6 @@ export default function App() {
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
       }
-      setApplesEaten(applesEaten + 1); 
       setApple(newApple);
       return true;
     }
@@ -84,10 +80,8 @@ export default function App() {
     const snakeCopy = JSON.parse(JSON.stringify(snake)); 
 
     // Snake AI
-    if (snakeAI) {
-      moveSnake(randomMove(direction)); 
-    }
-  
+    moveSnake(randomMove(direction)); 
+
     const newSnakeHead = [snakeCopy[0][0] + direction[0], snakeCopy[0][1] + direction[1]]; 
     snakeCopy.unshift(newSnakeHead);
     if (checkCollision(newSnakeHead)) endGame(); 
@@ -123,12 +117,7 @@ export default function App() {
         height={`${CANVAS_SIZE[1]}px`}
         />
 
-      {gameOver && 
-        <div>
-          GAME OVER!
-          Apples Eaten: {applesEaten}
-        </div>
-      }
+      {gameOver && <div>GAME OVER!</div>}
 
       <button onClick={startGame}>Start Game</button>
 
